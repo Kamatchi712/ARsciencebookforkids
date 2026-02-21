@@ -1,151 +1,165 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>AR Multi Model Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>AR Multi Model Project - Mobile</title>
 
     <!-- A-Frame -->
     <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
 
     <!-- AR.js -->
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-</head>
 
-<body style="margin:0; overflow:hidden;">
+    <style>
+        body { margin: 0; overflow: hidden; }
+        a-scene { width: 100%; height: 100%; }
+    </style>
+</head>
+<body>
 
 <a-scene
     embedded
+    vr-mode-ui="enabled: false"
     arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;"
-    vr-mode-ui="enabled: false">
+    renderer="antialias: true; alpha: true;">
 
     <!-- ================= PLANETS ================= -->
 
     <!-- MERCURY -->
     <a-marker type="pattern" url="Markers/pattern-mercuryimage.patt">
-    <a-gltf-model 
-      src="modals/mercury.glb"
-      scale="0.2 0.2 0.2"
-      rotation="-90 0 0"
-      class="clickable"
-      click-handler
-      data-audio="#mercuryAudio">
-    </a-gltf-model>
-    <a-sound id="mercuryAudio" src="audio/mercury.mp3" autoplay="false"></a-sound>
-  </a-marker>
+        <a-gltf-model 
+            src="modals/mercury.glb"
+            scale="0.3 0.3 0.3"
+            rotation="-90 0 0"
+            class="clickable"
+            data-audio="#mercuryAudio">
+        </a-gltf-model>
+        <a-sound id="mercuryAudio" src="audio/mercury.mp3" autoplay="false"></a-sound>
+    </a-marker>
+
     <!-- MARS -->
-    <a-marker type="pattern" url="Markers/pattern-marsimage.patt" emitevents="true">
+    <a-marker type="pattern" url="Markers/pattern-marsimage.patt">
         <a-gltf-model 
             src="modals/mars.glb"
-            scale="0.2 0.2 0.2"
+            scale="0.3 0.3 0.3"
             rotation="-90 0 0"
             animation="property: rotation; to: 0 360 0; loop: true; dur: 6000">
         </a-gltf-model>
     </a-marker>
 
     <!-- JUPITER -->
-    <a-marker type="pattern" url="Markers/pattern-jupyterimage.patt" emitevents="true">
+    <a-marker type="pattern" url="Markers/pattern-jupyterimage.patt">
         <a-gltf-model 
             src="modals/jupiter.glb"
-            scale="1 1 1"
+            scale="0.8 0.8 0.8"
             rotation="-90 0 0"
             animation="property: rotation; to: 0 360 0; loop: true; dur: 9000">
         </a-gltf-model>
     </a-marker>
 
     <!-- SATURN -->
-    <a-marker type="pattern" url="Markers/pattern-saturnimage.patt" emitevents="true">
+    <a-marker type="pattern" url="Markers/pattern-saturnimage.patt">
         <a-gltf-model 
             src="modals/saturn.glb"
-            scale="0.01 0.01 0.01"
+            scale="0.3 0.3 0.3"
             rotation="-90 0 0"
             animation="property: rotation; to: 0 360 0; loop: true; dur: 9000">
         </a-gltf-model>
     </a-marker>
 
     <!-- URANUS -->
-    <a-marker type="pattern" url="Markers/pattern-uranusimage.patt"emitevents="true" emitevents="true">
+    <a-marker type="pattern" url="Markers/pattern-uranusimage.patt">
         <a-gltf-model 
             src="modals/uranus.glb"
-            scale="0.15 0.15 0.15"
+            scale="0.2 0.2 0.2"
             rotation="-90 0 0"
             animation="property: rotation; to: 0 360 0; loop: true; dur: 8000">
         </a-gltf-model>
     </a-marker>
 
     <!-- NEPTUNE -->
-    <a-marker type="pattern" url="Markers/pattern-neptuneimage.patt" emitevents="true">
+    <a-marker type="pattern" url="Markers/pattern-neptuneimage.patt">
         <a-gltf-model 
             src="modals/neptune.glb"
-            scale="0.001 0.001 0.001"
+            scale="0.2 0.2 0.2"
             rotation="-90 0 0"
             animation="property: rotation; to: 0 360 0; loop: true; dur: 8000">
         </a-gltf-model>
     </a-marker>
 
-   <!-- SUN / EARTH SYSTEM -->
-<a-marker type="pattern" url="Markers/pattern-earthimage.patt" emitevents="true">
-
-    <a-entity
-        animation="property: rotation; to: 0 360 0; loop: true; dur: 10000">
-
-        <a-gltf-model 
-            src="modals/earth_moon_sun_free_pbr_model.glb"
-            scale="2 2 2"
-            rotation="-90 0 0">
-        </a-gltf-model>
-
-    </a-entity>
-
-</a-marker>
-
-    <a-marker type="pattern" url="Markers/pattern-sunimage.patt" emitevents="true">
+    <!-- SUN -->
+    <a-marker type="pattern" url="Markers/pattern-sunimage.patt">
         <a-gltf-model 
             src="modals/sun.glb"
-            scale="7 7 7"
+            scale="2 2 2"
             rotation="-90 0 0"
             animation="property: rotation; to: 0 360 0; loop: true; dur: 10000">
         </a-gltf-model>
     </a-marker>
 
+    <!-- EARTH + MOON -->
+    <a-marker type="pattern" url="Markers/pattern-earthimage.patt">
+        <a-entity animation="property: rotation; to: 0 360 0; loop: true; dur: 10000">
+            <a-gltf-model 
+                src="modals/earth_moon_sun_free_pbr_model.glb"
+                scale="1.5 1.5 1.5"
+                rotation="-90 0 0">
+            </a-gltf-model>
+        </a-entity>
+    </a-marker>
+
     <!-- ================= HUMAN ORGANS ================= -->
 
     <!-- HEART -->
-    <a-marker type="pattern" url="Markers/pattern-heartimage.patt" emitevents="true">
+    <a-marker type="pattern" url="Markers/pattern-heartimage.patt">
         <a-gltf-model 
             src="modals/realistic_human_heart.glb"
-            scale="1 1 1"
+            scale="0.8 0.8 0.8"
             rotation="-90 0 0">
         </a-gltf-model>
     </a-marker>
 
     <!-- LUNGS -->
-    <a-marker type="pattern" url="Markers/pattern-lungsimage.patt" emitevents="true">
+    <a-marker type="pattern" url="Markers/pattern-lungsimage.patt">
         <a-gltf-model 
             src="modals/realistic_human_lungs.glb"
-            scale="5 5 5"
+            scale="1 1 1"
             rotation="-90 0 0">
         </a-gltf-model>
     </a-marker>
-<a-marker type="pattern" url="Markers/pattern-atomimage.patt" emitevents="true">
+
+    <!-- ATOM -->
+    <a-marker type="pattern" url="Markers/pattern-atomimage.patt">
         <a-gltf-model 
             src="modals/atom.glb"
-            scale="0.01 0.01 0.01"
+            scale="0.02 0.02 0.02"
             rotation="0 0 0">
         </a-gltf-model>
     </a-marker>
-    <a-marker type="pattern" url="Markers/pattern-skeletonimage.patt" emitevents="true">
+
+    <!-- SKELETON -->
+    <a-marker type="pattern" url="Markers/pattern-skeletonimage.patt">
         <a-gltf-model 
             src="modals/skeleton.glb"
-            scale="5 5 5"
+            scale="1 1 1"
             rotation="0 0 0">
         </a-gltf-model>
     </a-marker>
-    <!-- CAMERA -->
-    <a-entity camera>
-        <a-cursor></a-cursor>
-    </a-entity>
 
+    <!-- CAMERA -->
+    <a-entity camera></a-entity>
 </a-scene>
+
+<script>
+    // Make audio playable on mobile
+    document.querySelectorAll('.clickable').forEach(el => {
+        el.addEventListener('touchstart', () => {
+            const audioEl = document.querySelector(el.getAttribute('data-audio'));
+            if (audioEl) audioEl.components.sound.playSound();
+        });
+    });
+</script>
 
 </body>
 </html>
